@@ -5,7 +5,7 @@ JTwine-to-JSON makes a few useful changes to [Twine-to-JSON](https://jtschoonhov
 
 ## Setup
 
-From the Twine 2 homescreen, select the Twine Menu, then "Story Format". "+ Add" a New Format. At the prompt, "Paste in the address below": https://cdn.githubraw.com/BL-MSCH-C220/JTwine-to-JSON/main/format.js
+From the Twine 2 homescreen, select the Twine Menu, then "Story Format". "+ Add" a New Format. At the prompt, "Paste in the address below": `https://cdn.githubraw.com/BL-MSCH-C220/JTwine-to-JSON/main/format.js`
 
 
 ## Export
