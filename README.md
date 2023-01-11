@@ -5,14 +5,12 @@ JTwine-to-JSON makes a few useful changes to [Twine-to-JSON](https://jtschoonhov
 
 ## Setup
 
-From the Twine 2 homescreen, select Formats and then Add a New Format. At the prompt, paste in the address below:
+From the Twine 2 homescreen, select the Twine Menu, then "Story Format". "+ Add" a New Format. At the prompt, "Paste in the address below": https://cdn.githubraw.com/BL-MSCH-C220/JTwine-to-JSON/main/format.js
 
 
 ## Export
 
-Once you’ve installed format, enter your story and choose Change Story Format. Select the new format and return to your story. Selecting Play will export a JSON file.
-
-From within your story, set the story format to Twison. Choosing “Play” will now give you a JSON file.
+Once you’ve installed format, enter your story and choose Change Story Format. Select the new format and return to your story. Selecting Play will generate a JSON file in your browser. It can then be copied for use elsewhere.
 
 ## Example Output
 ```

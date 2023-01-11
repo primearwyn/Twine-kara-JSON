@@ -1,6 +1,6 @@
 window.storyFormat({
 	"name": "JTwine-To-JSON",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"author": "Jason Francis",
 	"description": "Export your Twine 2 story as a JSON document, based on Twine-to-JSON",
 	"proofing": false,
@@ -132,13 +132,13 @@ function extractLinksAtIndex(passageText, currentIndex) {
         const rightSplit = link.split('->', 2);
         const original = passageText.substring(currentIndex, currentIndex + link.length + 4);
         if (leftSplit.length === 2) {
-            return { original: original, label: leftSplit[1].trim(), newPassage: leftSplit[0].trim(), pid: "", selection: "" };
+            return { original: original, label: leftSplit[1], newPassage: leftSplit[0], pid: "", selection: "" };
         }
         else if (rightSplit.length === 2) {
-            return { original: original, label: rightSplit[0].trim(), newPassage: rightSplit[1].trim(), pid: "", selection: "" };
+            return { original: original, label: rightSplit[0], newPassage: rightSplit[1], pid: "", selection: "" };
         }
         else {
-            return { original: original, label: link.trim(), newPassage: link.trim(), pid: "", selection: "" };
+            return { original: original, label: link, newPassage: link, pid: "", selection: "" };
         }
     }
 }
