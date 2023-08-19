@@ -22,7 +22,7 @@ Once you’ve installed format, enter your story and choose Change Story Format.
       "name": "Bridge of the Enterprise",
       "tags": "",
       "pid": "1",
-      "text": "You are standing on the bridge of the enterprise. Worf is at tactical and Data is at Conn.\n\n[[Go to the captain's ready room->Ready Room]]\n[[Go to the turbolift->Turbolift]]\n[[Go the the meeting room->Meeting Room]]",
+      "original": "You are standing on the bridge of the enterprise. Worf is at tactical and Data is at Conn.\n\n[[Go to the captain's ready room->Ready Room]]\n[[Go to the turbolift->Turbolift]]\n[[Go the the meeting room->Meeting Room]]",
       "links": [
         {
           "original": "[[Go to the captain's ready room->Ready Room]]",
@@ -46,13 +46,13 @@ Once you’ve installed format, enter your story and choose Change Story Format.
           "selection": "3"
         }
       ],
-      "cleanText": "You are standing on the bridge of the enterprise. Worf is at tactical and Data is at Conn."
+      "text": "You are standing on the bridge of the enterprise. Worf is at tactical and Data is at Conn."
     },
     {
       "name": "Ready Room",
       "tags": "",
       "pid": "2",
-      "text": "You are standing in the Captain's ready room. Captain Picard is here drinking a cup of Earl Grey Tea, hot.\n\n[[Go to the bridge->Bridge of the Enterprise]] \n[[Replicate some tea->Ready Room with Tea]]",
+      "original": "You are standing in the Captain's ready room. Captain Picard is here drinking a cup of Earl Grey Tea, hot.\n\n[[Go to the bridge->Bridge of the Enterprise]] \n[[Replicate some tea->Ready Room with Tea]]",
       "links": [
         {
           "original": "[[Go to the bridge->Bridge of the Enterprise]]",
@@ -69,7 +69,7 @@ Once you’ve installed format, enter your story and choose Change Story Format.
           "selection": "2"
         }
       ],
-      "cleanText": "You are standing in the Captain's ready room. Captain Picard is here drinking a cup of Earl Grey Tea, hot."
+      "text": "You are standing in the Captain's ready room. Captain Picard is here drinking a cup of Earl Grey Tea, hot."
     }
 }
 ```
