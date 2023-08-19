@@ -1,6 +1,6 @@
 window.storyFormat({
 	"name": "JTwine-To-JSON",
-	"version": "0.1.1",
+	"version": "0.2.1",
 	"author": "Jason Francis",
 	"description": "Export your Twine 2 story as a JSON document, based on Twine-to-JSON",
 	"proofing": false,
@@ -88,9 +88,9 @@ function processPassageElement(passageElement, format) {
         tags: passageMeta.tags,
         pid: passageMeta.pid,
     };
-    result.text = passageElement.innerText.trim();
+    result.original = passageElement.innerText.trim();
     Object.assign(result, processPassageText(result.text, format));
-    result.cleanText = sanitizeText(result.text, result.links, result.hooks, format);
+    result.text = sanitizeText(result.text, result.links, result.hooks, format);
     return result;
 }
 function processPassageText(passageText, format) {
