@@ -89,8 +89,8 @@ function processPassageElement(passageElement, format) {
         pid: passageMeta.pid,
     };
     result.original = passageElement.innerText.trim();
-    Object.assign(result, processPassageText(result.text, format));
-    result.text = sanitizeText(result.text, result.links, result.hooks, format);
+    Object.assign(result, processPassageText(result.original, format));
+    result.text = sanitizeText(result.original, result.links, result.hooks, format);
     return result;
 }
 function processPassageText(passageText, format) {
