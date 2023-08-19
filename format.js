@@ -1,6 +1,6 @@
 window.storyFormat({
 	"name": "JTwine-To-JSON",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"author": "Jason Francis",
 	"description": "Export your Twine 2 story as a JSON document, based on Twine-to-JSON",
 	"proofing": false,
