@@ -1,15 +1,15 @@
 window.storyFormat({
 	"name": "TwineKara",
-	"version": "0.2.5",
+	"version": "0.2.6",
 	"author": "Armand Accrombessi",
 	"description": "Export your Twine 2 story as a JSON document, based on JTwine-To-JSON",
 	"proofing": false,
 	"source": `
-	<html> 
+<html> 
 	<head>
-        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 		<title>TwineKara</title>
-        <script type='text/javascript'>
+    	<script type='text/javascript'>
 /**
 * TwineKara: forked from JTwine-To-JSON by Jason Francis 
 *
@@ -39,6 +39,8 @@ const PASSAGE_TAG_NAME = 'tw-passagedata';
 const FORMAT_TWINE = 'twine';
 const FORMAT_HARLOWE_3 = 'harlowe-3';
 const VALID_FORMATS = [FORMAT_TWINE, FORMAT_HARLOWE_3];
+
+const END_DECL = '\\n';
 /**
  * Convert Twine story to JSON.
  */
@@ -112,7 +114,7 @@ function processPassageText(passageText, format) {
 		const maybeVar = extractVarsAtIndex(passageText, currentIndex);
 		if (maybeVar) {
 			result.vars.push(maybeVar);
-			result.data[maybeVar.key]=maybeVar.value;
+			result.data[maybeVar.key]=JSON.parse(maybeVar.value);
 			currentIndex += maybeVar.original.length;
 		}
 
@@ -161,9 +163,9 @@ function extractVarsAtIndex(passageText, currentIndex) {
 	if ((currentChar === '$' && nextChar === '$') 
 	||  (currentChar === '_' && nextChar === '_')) {
 
-		const declaration = getSubstringBetweenBrackets(passageText, currentIndex + 1, nextChar, '\\n');
+		const declaration = getSubstringBetweenBrackets(passageText, currentIndex + 1, nextChar, END_DECL);
 		const [key, value] = declaration.split('=', 2);
-		const original = passageText.substring(currentIndex, currentIndex + declaration.length + 3);
+		const original = passageText.substring(currentIndex, currentIndex + declaration.length + 2);
 
 		return { original: original, key: key.trim(), value: value.trim(), temp: (currentChar === '_') };
 	}
@@ -210,7 +212,7 @@ function sanitizeText(passageText, links, vars, hooks, format) {
 		passageText = passageText.replace(link.original, '');
 	});
 	vars.forEach((v) => {
-		passageText = passageText.replace(v.original, '');
+		passageText = passageText.replace(v.original+END_DECL, '');
 	});
 	if (format === FORMAT_HARLOWE_3) {
 		hooks.forEach((hook) => {
