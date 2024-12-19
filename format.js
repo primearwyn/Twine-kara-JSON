@@ -1,21 +1,23 @@
 window.storyFormat({
-	"name": "JTwine-To-JSON",
-	"version": "0.2.2",
-	"author": "Jason Francis",
-	"description": "Export your Twine 2 story as a JSON document, based on Twine-to-JSON",
+	"name": "TwineKara",
+	"version": "0.2.3",
+	"author": "Armand Accrombessi",
+	"description": "Export your Twine 2 story as a JSON document, based on JTwine-To-JSON",
 	"proofing": false,
 	"source": `
-	<html>
+	<html> 
 	<head>
         <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-		<title>Harlowe To JSON</title>
+		<title>TwineKara</title>
         <script type='text/javascript'>
             /**
-* JTwine-To-JSON: modified by Jason Francis for use in BL-MSCH-C220
+* TwineKara: forked from JTwine-To-JSON by Jason Francis 
+*
+* Source repo [here](https://github.com/BL-MSCH-C220/JTwine-to-JSON)
 *
 * Originally adapted from [twine-to-json](https://jtschoonhoven.github.io/twine-to-json/)
 *
-* Copyright (c) 2022 Jason Francis
+* Copyright (c) 2024 Armand Accrombessi
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 * associated documentation files (the 'Software'), to deal in the Software without restriction,
@@ -243,7 +245,7 @@ function getSubstringBetweenBrackets(string, startIndex, openBracket, closeBrack
 	<body>
         <pre id='content'></pre>
         <div id='storyData' style='display: none;'>{{STORY_DATA}}</div>
-        <script type='text/javascript'>document.getElementById('content').innerHTML = JSON.stringify(twineToJSON("twine"), null, 2);</script>
+        <script type='text/javascript'>document.getElementById('content').innerHTML = JSON.stringify(twineToJSON("twine"), null, "\t");</script>
 	</body>
 </html>
 	`
