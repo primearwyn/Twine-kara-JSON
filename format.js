@@ -59,7 +59,7 @@ function twineToJSON(format) {
 			l = p.links[j];
 			temp = parseInt(j) + 1
 			l.selection = temp.toString();
-            
+
 			n = l.newPassage;
 			for (k in result.passages){
 				s = result.passages[k];
@@ -92,12 +92,12 @@ function processPassageElement(passageElement, format) {
     };
     result.original = passageElement.innerText.trim();
     Object.assign(result, processPassageText(result.original, format));
-    result.text = sanitizeText(result.original, result.links, result.hooks, format);
+    result.text = sanitizeText(result.original, result.links, result.vars, result.hooks, format);
     return result;
 }
 
 function processPassageText(passageText, format) {
-    const result = { links: [] };
+    const result = { links: [], vars: [], data: {} };
     if (format === FORMAT_HARLOWE_3) {
         result.hooks = [];
     }
@@ -108,10 +108,19 @@ function processPassageText(passageText, format) {
             result.links.push(maybeLink);
             currentIndex += maybeLink.original.length;
         }
+
+        const maybeVar = extractVarsAtIndex(passageText, currentIndex);
+        if (maybeVar) {
+            result.vars.push(maybeVar);
+            result.data[maybeVar.key]=maybeVar.value;
+            currentIndex += maybeVar.original.length;
+        }
+
         if (format !== FORMAT_HARLOWE_3) {
             currentIndex++;
             continue;
         }
+
         const maybeLeftHook = extractLeftHooksAtIndex(passageText, currentIndex);
         if (maybeLeftHook) {
             result.hooks.push(maybeLeftHook);
@@ -143,6 +152,20 @@ function extractLinksAtIndex(passageText, currentIndex) {
         else {
             return { original: original, label: link, newPassage: link, pid: "", selection: "" };
         }
+    }
+}
+function extractVarsAtIndex(passageText, currentIndex) {
+    const currentChar = passageText[currentIndex];
+    const nextChar = passageText[currentIndex + 1];
+
+    if ((currentChar === '$' && nextChar === '$') 
+    ||  (currentChar === '_' && nextChar === '_')) {
+
+        const declaration = getSubstringBetweenBrackets(passageText, currentIndex + 1, nextChar, '\n');
+        const [key, value] = declaration.split('=', 2);
+        const original = passageText.substring(currentIndex, currentIndex + declaration.length + 3);
+
+        return { original: original, key: key.trim(), value: value.trim(), temp: (currentChar === '_') };
     }
 }
 function extractLeftHooksAtIndex(passageText, currentIndex) {
@@ -182,9 +205,12 @@ function extractHooksAtIndex(passageText, currentIndex) {
         return { hookName: undefined, hookText: hookText, original: original };
     }
 }
-function sanitizeText(passageText, links, hooks, format) {
+function sanitizeText(passageText, links, vars, hooks, format) {
     links.forEach((link) => {
         passageText = passageText.replace(link.original, '');
+    });
+    vars.forEach((v) => {
+        passageText = passageText.replace(v.original, '');
     });
     if (format === FORMAT_HARLOWE_3) {
         hooks.forEach((hook) => {
