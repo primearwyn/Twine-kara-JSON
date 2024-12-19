@@ -1,11 +1,11 @@
-# JTwine-to-JSON
-A story format for converting a Twine 2 story to JSON with special support for Harlowe 3.x. Specifically created for MSCH-C220 at Indiana University—Bloomington.
+# TwineKara
+A story format for converting a Twine 2 story to JSON with special support for Harlowe 3.x. Forked from JTwine-to-JSON.
 
 JTwine-to-JSON makes a few useful changes to [Twine-to-JSON](https://jtschoonhoven.github.io/twine-to-json/), which was inspired by [Twison](https://github.com/lazerwalker/twison). Twison was, in turn, inspired by [Entweedle](http://www.maximumverbosity.net/twine/Entweedle/).
 
 ## Setup
 
-From the Twine 2 homescreen, select the Twine Menu, then "Story Format". "+ Add" a New Format. At the prompt, "Paste in the address below": `https://cdn.githubraw.com/BL-MSCH-C220/JTwine-to-JSON/main/format.js`
+From the Twine 2 homescreen, select the Twine Menu, then "Story Format". "+ Add" a New Format. At the prompt, "Paste in the address below": `https://cdn.githubraw.com/primearwyn/Twine-kara-JSON/main/format.js`
 
 
 ## Export
